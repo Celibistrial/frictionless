@@ -4,9 +4,10 @@
   "package": "frictionless.frictionless.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "slippymixin"
+
   ],
   "client": [
+    "slippymixin"
   ],
   "injectors": {
     "defaultRequire": 1
