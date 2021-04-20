@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "frictionless",
+  "version": "${version}",
+  "name": "frictionless",
+  "description": "Removes friction",
+  "authors": [
+    "Celibistrial"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/frictionless/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "frictionless.frictionless.client.FrictionlessClient"
+    ],
+    "main": [
+      "frictionless.frictionless.Frictionless"
+    ]
+  },
+  "mixins": [
+    "frictionless.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "fabric": "*",
+    "minecraft": "1.16.5"
+  }
+}
