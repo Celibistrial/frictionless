@@ -42,7 +42,7 @@ public class slippymixin {
             vel = 1.05F;
 
         }else if(!Frictionless.isSlip){
-            vel =1F;
+            vel =1.001F;
         }
         cir.setReturnValue(vel);
     }
