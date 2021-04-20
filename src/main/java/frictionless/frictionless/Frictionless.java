@@ -24,11 +24,16 @@ public class Frictionless implements ModInitializer{
     public void onInitialize() {
         CommandRegistrationCallback.EVENT.register((dispatcher, dedicated) -> {
             dispatcher.register(literal("toggleSlip").executes(context -> {
-                if(isSlip){
+                if (isSlip) {
                     isSlip = false;
                 }
-                else if(!isSlip){
-                    isSlip = true;
+                else {
+                    // When else block is executed, isSlip must be false, as it isn't true
+                    // so the below if statement is redundant
+                    if (!isSlip)
+                    {
+                        isSlip = true;
+                    }
                 }
                 return 1;
             }));
