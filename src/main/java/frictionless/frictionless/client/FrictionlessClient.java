@@ -21,6 +21,7 @@ public class FrictionlessClient implements ClientModInitializer {
             while (messageKey.wasPressed()) {
                 if (Frictionless.isSlip) {
                     Frictionless.isSlip = false;
+                    client.player.sendMessage(new LiteralText("Friction Added"), false);
                 }
                 else {
                     // When else block is executed, isSlip must be false, as it isn't true
@@ -28,10 +29,11 @@ public class FrictionlessClient implements ClientModInitializer {
                     if (!Frictionless.isSlip)
                     {
                         Frictionless.isSlip = true;
+                        client.player.sendMessage(new LiteralText("Friction Removed"), false);
                     }
                 }
                 assert client.player != null;
-                client.player.sendMessage(new LiteralText("Key 1 was pressed!"), false);
+
             }
         });
     }
