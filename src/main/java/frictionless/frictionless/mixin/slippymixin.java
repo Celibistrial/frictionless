@@ -2,7 +2,10 @@ package frictionless.frictionless.mixin;
 
 import frictionless.frictionless.Frictionless;
 import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemConvertible;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -12,13 +15,17 @@ import static net.minecraft.server.command.CommandManager.literal;
 
 
 @Mixin(Block.class)
-public class slippymixin {
+public class slippymixin extends AbstractBlock implements ItemConvertible {
 
 
    public float slip = 1F;
    //def is 0.6
    public float vel = 1.05F;
-   //def is 1
+
+    public slippymixin(Settings settings) {
+        super(settings);
+    }
+    //def is 1
 
 
 
@@ -28,7 +35,7 @@ public class slippymixin {
             slip = 1F;
 
         }else if(!Frictionless.isSlip){
-            slip = 0.6F;
+            slip = this.slipperiness;
         }
         cir.setReturnValue(slip);
 
@@ -42,13 +49,21 @@ public class slippymixin {
             vel = 1.05F;
 
         }else if(!Frictionless.isSlip){
-            vel =1.001F;
+            vel = this.velocityMultiplier;
         }
         cir.setReturnValue(vel);
     }
 
 
+    @Override
+    public Item asItem() {
+        return null;
+    }
 
+    @Override
+    protected Block asBlock() {
+        return null;
+    }
 }
 
 
