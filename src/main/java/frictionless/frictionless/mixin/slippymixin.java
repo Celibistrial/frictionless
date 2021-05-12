@@ -15,7 +15,7 @@ import static net.minecraft.server.command.CommandManager.literal;
 
 
 @Mixin(Block.class)
-public class slippymixin extends AbstractBlock implements ItemConvertible {
+public abstract class slippymixin extends AbstractBlock implements ItemConvertible {
 
 
    public float slip = 1F;
@@ -33,6 +33,7 @@ public class slippymixin extends AbstractBlock implements ItemConvertible {
     private void slippyFix(CallbackInfoReturnable<Float> cir) {
         if(Frictionless.isSlip){
             slip = 1F;
+
 
         }else if(!Frictionless.isSlip){
             slip = this.slipperiness;
@@ -55,15 +56,7 @@ public class slippymixin extends AbstractBlock implements ItemConvertible {
     }
 
 
-    @Override
-    public Item asItem() {
-        return null;
-    }
 
-    @Override
-    protected Block asBlock() {
-        return null;
-    }
 }
 
 
