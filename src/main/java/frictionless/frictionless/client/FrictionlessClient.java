@@ -6,6 +6,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.options.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.text.LiteralText;
@@ -15,6 +16,8 @@ import org.lwjgl.glfw.GLFW;
 public class FrictionlessClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
+     
+
         KeyBinding messageKey = KeyBindingHelper.registerKeyBinding(new KeyBinding("ToggleSlippery", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_M, "SlippyMod"));
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {

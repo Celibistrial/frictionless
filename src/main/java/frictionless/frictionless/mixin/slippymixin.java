@@ -33,12 +33,14 @@ public abstract class slippymixin extends AbstractBlock implements ItemConvertib
     private void slippyFix(CallbackInfoReturnable<Float> cir) {
         if(Frictionless.isSlip){
             slip = 1F;
+            cir.setReturnValue(slip);
 
 
         }else if(!Frictionless.isSlip){
             slip = this.slipperiness;
+
         }
-        cir.setReturnValue(slip);
+
 
     }
 
@@ -48,11 +50,12 @@ public abstract class slippymixin extends AbstractBlock implements ItemConvertib
     private void velFix(CallbackInfoReturnable<Float> cir) {
         if(Frictionless.isSlip){
             vel = 1.05F;
+            cir.setReturnValue(vel);
 
         }else if(!Frictionless.isSlip){
             vel = this.velocityMultiplier;
         }
-        cir.setReturnValue(vel);
+
     }
 
 
